@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\UX\Turbo\Attribute\Broadcast;
 
 #[ORM\Entity(repositoryClass: PanierRepository::class)]
-#[Broadcast]
+
 class Panier
 {
     #[ORM\Id]
