@@ -1,19 +1,19 @@
 {% extends 'base-user.html.twig' %}
 
-
 {% block body %}
-    <h1>ProduitStore index</h1>
+<div class="container">
+    <h1 class="title">Liste des Produits</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
+                <th>ID</th>
                 <th>Nom</th>
                 <th>Description</th>
-                <th>Quantite</th>
-                <th>Prix</th>
-                <th>Path_img</th>
-                <th>actions</th>
+                {# <th>Quantité</th> #}
+                {# <th>Prix</th> #}
+                {# <th>Image</th> #}
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -21,22 +21,131 @@
             <tr>
                 <td>{{ produit_store.id }}</td>
                 <td>{{ produit_store.nom }}</td>
-                <td>{{ produit_store.description }}</td>
+                {# <td>{{ produit_store.description }}</td> #}
                 <td>{{ produit_store.quantite }}</td>
-                <td>{{ produit_store.prix }}</td>
-                <td>{{ produit_store.pathImg }}</td>
-                <td>
-                    <a href="{{ path('app_produitstore_show', {'id': produit_store.id}) }}">show</a>
-                    <a href="{{ path('app_produitstore_edit', {'id': produit_store.id}) }}">edit</a>
+                {# <td>{{ produit_store.prix }} DT</td> #}
+                {# <td> #}
+                    {# {% if produit_store.pathImg %}
+                        <img src="{{ asset(produit_store.pathImg) }}" alt="Produit" class="product-img">
+                    {% else %}
+                        <span class="no-image">Aucune image</span>
+                    {% endif %} #}
+                {# </td> #}
+                <td class="editing">
+                    <a href="{{ path('app_produitstore_show', {'id': produit_store.id}) }}" class="btn btn-view">👁️ Voir</a>
+                    <a href="{{ path('app_produitstore_edit', {'id': produit_store.id}) }}" class="btn btn-edit">✏️ Modifier</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="7">no records found</td>
+                <td colspan="7" class="text-center">Aucun produit trouvé</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('app_produitstore_new') }}">Create new</a>
+    <a href="{{ path('app_produitstore_new') }}" class="btn btn-add">➕ Ajouter un produit</a>
+</div>
+
+<style>
+    /* Conteneur principal */
+    .container {
+        max-width: 1000px;
+        margin: 20px auto;
+        padding: 20px;
+        background: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    .title {
+        color: #2E8B57;
+        font-size: 26px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    /* Table */
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    .table th, .table td {
+        padding: 12px;
+        border: 1px solid #ddd;
+        text-align: center;
+    }
+
+    .table th {
+        background-color: #2E8B57;
+        color: white;
+        text-transform: uppercase;
+    }
+
+    .table tbody tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    /* Alignement des actions */
+    .editing {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+
+    /* Affichage des images */
+    .product-img {
+        width: 60px;
+        height: 60px;
+        border-radius: 5px;
+        object-fit: cover;
+    }
+
+    .no-image {
+        font-size: 14px;
+        color: gray;
+    }
+
+    /* Boutons */
+    .btn {
+        display: inline-block;
+        padding: 8px 14px;
+        font-size: 14px;
+        font-weight: bold;
+        border-radius: 5px;
+        border: 2px solid transparent;
+        transition: all 0.3s ease;
+        text-decoration: none;
+    }
+
+    .btn-view {
+        background-color: #FFD700;
+        color: black;
+    }
+
+    .btn-edit {
+        background-color: #87CEFA;
+        color: black;
+    }
+
+    .btn-add {
+        background-color: #444;
+        color: white;
+        margin-top: 15px;
+        padding: 10px 18px;
+        font-size: 16px;
+        border: 2px solid white;
+    }
+
+    /* Effets au survol */
+    .btn:hover {
+        opacity: 0.9;
+        transform: translateY(-2px);
+    }
+</style>
+
 {% endblock %}

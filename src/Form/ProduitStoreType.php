@@ -42,10 +42,32 @@ class ProduitStoreType extends AbstractType
             'required' => true,
             'attr' => ['min' => 0, 'step' => 0.01]
         ])
-        ->add('path_img', FileType::class, [
-           'label' => 'Image du produit',
-    'mapped' => false,
-    'required' => false,
+//         ->add('path_img', FileType::class, [
+//            'label' => 'Image du produit',
+//     'mapped' => false,
+//     'required' => false,
+//     'attr' => ['onchange' => 'previewImage(event)'],
+//     'constraints' => [
+//         new File([
+//             'maxSize' => '2M',
+//             'mimeTypes' => ['image/jpeg', 'image/png', 'image/jpg'],
+//             'mimeTypesMessage' => 'Veuillez uploader une image valide (JPG, PNG)',
+//         ])
+//     ],
+// ])
+
+->add('categorie_id', EntityType::class, [
+    'class' => Categorie::class,
+    'choice_label' => 'nom',
+    'label' => 'Catégorie',
+    'placeholder' => 'Sélectionnez une catégorie'
+])
+  
+
+->add('path_img', FileType::class, [
+    'label' => 'Changer l’image',
+    'mapped' => false, // Ne pas mapper directement avec l'entité
+    'required' => false, // Permettre de ne pas modifier l'image
     'attr' => ['onchange' => 'previewImage(event)'],
     'constraints' => [
         new File([
@@ -55,13 +77,8 @@ class ProduitStoreType extends AbstractType
         ])
     ],
 ])
-        ->add('categorie_id', EntityType::class, [
-            'class' => Categorie::class,
-            'choice_label' => 'nom',
-            'label' => 'Catégorie',
-            'placeholder' => 'Sélectionnez une catégorie'
-        ])
-          
+
+
 ;
             // ->add('agriculteur_nom', TextType::class, [
             //     'label' => 'Nom de l\'agriculteur',

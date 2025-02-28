@@ -1,43 +1,107 @@
 {% extends 'base-user.html.twig' %}
 
-
-{# <title>ProduitStore</title> #}
-
 {% block body %}
-    <h1>ProduitStore</h1>
+    <div class="agriculture-container">
+        <h1>ProduitStore - Produits Agricoles</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ produit_store.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ produit_store.nom }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ produit_store.description }}</td>
-            </tr>
-            <tr>
-                <th>Quantite</th>
-                <td>{{ produit_store.quantite }}</td>
-            </tr>
-            <tr>
-                <th>Prix</th>
-                <td>{{ produit_store.prix }}</td>
-            </tr>
-            <tr>
-                <th>Path_img</th>
-                <td>{{ produit_store.pathImg }}</td>
-            </tr>
-        </tbody>
-    </table>
+        <table class="table agriculture-table">
+            <tbody>
+                <tr>
+                    <th>ID</th>
+                    <td>{{ produit_store.id }}</td>
+                </tr>
+                <tr>
+                    <th>Nom</th>
+                    <td>{{ produit_store.nom }}</td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>{{ produit_store.description }}</td>
+                </tr>
+                <tr>
+                    <th>Quantité</th>
+                    <td>{{ produit_store.quantite }}</td>
+                </tr>
+                <tr>
+                    <th>Prix</th>
+                    <td>{{ produit_store.prix }}</td>
+                </tr>
+            </tbody>
+        </table>
 
-    <a href="{{ path('app_produitstore_index') }}">back to list</a>
+        <div class="product-image">
+            <img src="{{ asset('uploads/images/' ~ produit_store.pathImg) }}" alt="Image du produit agricole" class="photos">
+        </div>
 
-    <a href="{{ path('app_produitstore_edit', {'id': produit_store.id}) }}">edit</a>
+        <div class="actions">
+            <a href="{{ path('app_produitstore_index') }}" class="btn">Retour à la liste</a>
+            <a href="{{ path('app_produitstore_edit', {'id': produit_store.id}) }}" class="btn">Modifier</a>
+            {{ include('produitstore/_delete_form.html.twig') }}
+        </div>
+    </div>
 
-    {{ include('produitstore/_delete_form.html.twig') }}
+    {% block stylesheet %}
+    <style>
+        .agriculture-container {
+            background-color: #f7f8f4; /* Couleur de fond naturelle */
+            font-family: 'Arial', sans-serif; /* Police simple */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #4CAF50; /* Vert symbolisant la nature */
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+
+        .table th, .table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        .table th {
+            background-color: #8BC34A; /* Vert doux */
+            color: white;
+        }
+
+        .product-image {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .photos {
+            max-width: 50%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .actions {
+            text-align: center;
+        }
+
+        .btn {
+            background-color: #8BC34A;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 5px;
+        }
+
+        .btn:hover {
+            background-color: #7B9E31;
+        }
+
+    </style>
+    {% endblock %}
 {% endblock %}

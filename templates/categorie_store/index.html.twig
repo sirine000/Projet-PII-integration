@@ -23,13 +23,13 @@
                     <td>{{ categorie.nom }}</td>
                     <td  class="editing">
 
-                       <td>
+                    
                         <!-- Ajouter un bouton pour chaque catégorie -->
-                        <a href="{{ path('app_produitstore_new', {'categorie_id': categorie.id}) }}" class="btn btn-primary">Ajouter Produit</a>
-                    </td>
+                        <a href="{{ path('app_produitstore_new', {'categorie_id': categorie.id}) }}" class="btn btn-prod">+ Ajouter Produit</a>
+                    
 
-                        <a href="{{ path('app_categorie_store_show', {'id': categorie.id}) }}" class="btn btn-view">Afficher</a> 
-                        <a href="{{ path('app_categorie_store_edit', {'id': categorie.id}) }}" class="btn btn-edit">Modifier</a>
+                        <a href="{{ path('app_categorie_store_show', {'id': categorie.id}) }}" class="btn btn-view">👁️ Afficher</a> 
+                        <a href="{{ path('app_categorie_store_edit', {'id': categorie.id}) }}" class="btn btn-edit">✏️ Modifier</a>
           <a>     {{ include('categorie_store/_delete_form.html.twig') }}</a>
 
 
@@ -93,34 +93,46 @@
 
 
     .btn-view {
-        background-color: #3498db;
-        color: white;
+        background-color:rgb(254, 255, 182);
+        color: black;
     }
 
     .btn-edit {
-        background-color: #f39c12;
-        color: white;
-    }
+        background-color:rgb(210, 226, 249);
+ color: black;    }
 
     .btn-add {
-        background-color: #2E8B57;
+        background-color:rgb(179, 195, 177);
         color: white;
         margin-top: 15px;
         padding: 10px 15px;
         font-size: 16px;
     }
-
+.btn-prod{
+    background-color:rgb(204, 255, 196);
+ color: black;  
+}
     .btn:hover {
         opacity: 0.8;
+        color:white;
+        background-color:rgb(0, 0, 0);
+        border:2px solid white;
     }
 
     .text-center {
         text-align: center;
     }
-
+   .btn-delete:hover {
+        background-color:rgb(114, 21, 11);
+        color: white;}
     .btn-delete {
-        background-color:rgb(102, 25, 17);
+        background-color:rgb(114, 21, 11);
         color: white;
+
+          opacity: 0.8;
+        color:black;
+        background-color:rgb(227, 229, 224);
+        border: 1px solid black;
     }
 </style>
 
