@@ -1,0 +1,12 @@
+{% extends 'base-user.html.twig' %}
+
+
+{% block body %}
+    <h1>Edit ProduitStore</h1>
+
+    {{ include('produitstore/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_produitstore_index') }}">back to list</a>
+
+    {{ include('produitstore/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,127 @@
+{% extends 'base-user.html.twig' %}
+
+{% block title %}
+    <title>Catégories</title>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1 class="title">Liste des Catégories</h1>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for categorie in categories %}
+                <tr>
+                    <td>{{ categorie.id }}</td>
+                    <td>{{ categorie.nom }}</td>
+                    <td  class="editing">
+
+                       <td>
+                        <!-- Ajouter un bouton pour chaque catégorie -->
+                        <a href="{{ path('app_produitstore_new', {'categorie_id': categorie.id}) }}" class="btn btn-primary">Ajouter Produit</a>
+                    </td>
+
+                        <a href="{{ path('app_categorie_store_show', {'id': categorie.id}) }}" class="btn btn-view">Afficher</a> 
+                        <a href="{{ path('app_categorie_store_edit', {'id': categorie.id}) }}" class="btn btn-edit">Modifier</a>
+          <a>     {{ include('categorie_store/_delete_form.html.twig') }}</a>
+
+
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="3" class="text-center">Aucune catégorie trouvée</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_categorie_store_new') }}" class="btn btn-add">➕ Ajouter une catégorie</a>
+</div>
+
+<style>
+    .container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    .title {
+        color: #2E8B57;
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+{# .editing {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+} #}
+    .table th, .table td {
+        padding: 12px;
+        border: 1px solid #ddd;
+        text-align: center;
+    }
+
+    .table th {
+        background-color: #2E8B57;
+        color: white;
+    }
+
+    .table-striped tbody tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+
+
+    .btn-view {
+        background-color: #3498db;
+        color: white;
+    }
+
+    .btn-edit {
+        background-color: #f39c12;
+        color: white;
+    }
+
+    .btn-add {
+        background-color: #2E8B57;
+        color: white;
+        margin-top: 15px;
+        padding: 10px 15px;
+        font-size: 16px;
+    }
+
+    .btn:hover {
+        opacity: 0.8;
+    }
+
+    .text-center {
+        text-align: center;
+    }
+
+    .btn-delete {
+        background-color:rgb(102, 25, 17);
+        color: white;
+    }
+</style>
+
+{% endblock %}

@@ -1,0 +1,168 @@
+{% extends 'base-user.html.twig' %}
+
+{# 
+{% block body %}
+    <h1>Create new ProduitStore</h1>
+
+    {{ include('produitstore/_form.html.twig') }}
+
+    <a href="{{ path('app_produitstore_index') }}">back to list</a>
+{% endblock %} #}
+
+{# 
+{% block body %}
+<h2>Ajouter un produit</h2>
+
+{% for message in app.flashes('error') %}
+    <div class="alert alert-danger">{{ message }}</div>
+{% endfor %}
+
+{% for message in app.flashes('success') %}
+    <div class="alert alert-success">{{ message }}</div>
+{% endfor %}
+
+{{ form_start(form, {'attr': {'enctype': 'multipart/form-data'}}) }}
+    {{ form_row(form.nom) }}
+    {{ form_row(form.description) }}
+    {{ form_row(form.quantite) }}
+    {{ form_row(form.prix) }}
+    {{ form_row(form.path_img) }}
+    <button class="btn btn-primary">Ajouter</button>
+{{ form_end(form) }}
+
+{% endblock %} #}
+
+
+
+
+{% block body %}
+<style>
+    /* 🌟 Styles de base */
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f8f9fa;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* 🏠 Conteneur principal */
+    .container {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* 🎯 Titre */
+    h2 {
+        text-align: center;
+        color: #333;
+    }
+
+    /* ⚠ Messages d'alerte */
+    .alert {
+        padding: 10px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        text-align: center;
+    }
+
+    .alert-danger {
+        background-color: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+    }
+
+    .alert-success {
+        background-color: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+    }
+
+    /* 📝 Formulaire */
+    .form-container {
+        margin-top: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+
+    /* 🎯 Bouton */
+    .btn-primary {
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        border: none;
+        color: white;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+
+    /* 📱 Responsive */
+    @media (max-width: 768px) {
+        .container {
+            width: 90%;
+        }
+    }
+</style>
+
+<div class="container">
+    <h2>Ajouter un produit</h2>
+
+    {% for message in app.flashes('error') %}
+        <div class="alert alert-danger">{{ message }}</div>
+    {% endfor %}
+
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">{{ message }}</div>
+    {% endfor %}
+
+    <div class="form-container">
+        {{ form_start(form, {'attr': {'enctype': 'multipart/form-data'}}) }}
+            <div class="form-group">
+                {{ form_label(form.nom) }}
+                {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.description) }}
+                {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.quantite) }}
+                {{ form_widget(form.quantite, {'attr': {'class': 'form-control'}}) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.prix) }}
+                {{ form_widget(form.prix, {'attr': {'class': 'form-control'}}) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.path_img) }}
+                {{ form_widget(form.path_img, {'attr': {'class': 'form-control'}}) }}
+            </div>
+
+            <button class="btn btn-primary">Ajouter</button>
+        {{ form_end(form) }}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,89 @@
+{% extends 'base-user.html.twig' %}
+
+{% block title %}Edit User{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8 col-sm-10">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h2 class="text-center mb-4">Edit User</h2>
+
+                    {{ form_start(form, {'attr': {'class': 'needs-validation', 'novalidate': 'novalidate'}}) }}
+
+                    {# Display Global Form Errors #}
+                    {% if form.vars.errors|length > 0 %}
+                        <div class="alert alert-danger">
+                            {{ form_errors(form) }}
+                        </div>
+                    {% endif %}
+
+                    {# First Name #}
+                    <div class="form-group">
+                        {{ form_label(form.firstName, 'First Name') }}
+                        {{ form_widget(form.firstName, {'attr': {'class': 'form-control', 'placeholder': 'Enter first name'}}) }}
+                        {{ form_errors(form.firstName) }}
+                    </div>
+
+                    {# Last Name #}
+                    <div class="form-group">
+                        {{ form_label(form.lastName, 'Last Name') }}
+                        {{ form_widget(form.lastName, {'attr': {'class': 'form-control', 'placeholder': 'Enter last name'}}) }}
+                        {{ form_errors(form.lastName) }}
+                    </div>
+
+                    {# Email #}
+                    <div class="form-group">
+                        {{ form_label(form.email, 'Email Address') }}
+                        {{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder': 'Enter email'}}) }}
+                        {{ form_errors(form.email) }}
+                    </div>
+
+                    {# Phone Number #}
+                    <div class="form-group">
+                        {{ form_label(form.phoneNumber, 'Phone Number') }}
+                        {{ form_widget(form.phoneNumber, {'attr': {'class': 'form-control', 'placeholder': 'Enter phone number'}}) }}
+                        {{ form_errors(form.phoneNumber) }}
+                    </div>
+
+                    {# Birth Date #}
+                    <div class="form-group">
+                        {{ form_label(form.birthDate, 'Birth Date') }}
+                        {{ form_widget(form.birthDate, {'attr': {'class': 'form-control'}}) }}
+                        {{ form_errors(form.birthDate) }}
+                    </div>
+
+                    {# User Role Selection #}
+                    <div class="form-group">
+                        {{ form_label(form.userType, 'This user will:') }}
+                        {{ form_widget(form.userType, {'attr': {'class': 'form-control'}}) }}
+                        {{ form_errors(form.userType) }}
+                    </div>
+
+                    {# Submit Button #}
+                    <button type="submit" class="btn btn-primary btn-block mt-3 w-100">Save</button>
+
+                    {{ form_end(form) }}
+
+                    {# Back Button #}
+                    <div class="text-center mt-3">
+                        <a href="{{ path('app_user_index') }}" class="btn btn-secondary btn-block w-100">
+                            <i class="mdi mdi-arrow-left"></i> Back to List
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            {# Delete Form #}
+            <div class="card shadow mt-4">
+                <div class="card-body text-center">
+                    <h5 class="text-danger">Delete User</h5>
+                    <p class="text-muted">This action is irreversible.</p>
+                    {{ include('user/_delete_form.html.twig', {'button_label': 'Delete', 'class': 'btn btn-danger btn-block w-100'}) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

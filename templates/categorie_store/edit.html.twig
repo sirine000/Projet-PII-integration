@@ -1,0 +1,88 @@
+{% extends 'base-user.html.twig' %}
+
+{% block title %}
+    <title>Modifer Categorie</title>
+{% endblock %}
+
+{% block body %}
+    <div class="edit-categorie-container">
+        <h1>Modifier Categorie</h1>
+
+        {{ include('categorie_store/_form.html.twig', {'button_label': 'Update'}) }}
+
+        <div class="actions">
+            <!-- Lien de retour à la liste -->
+            {# <a href="{{ path('app_categorie_store_index') }}" class="back-link">Back to list</a> #}
+            
+            <!-- Formulaire de suppression placé après le bouton Update -->
+            <div class="delete-container">
+                {{ include('categorie_store/_delete_form.html.twig') }}
+            </div>
+        </div>
+    </div>
+
+    <style>
+        /* Container principal pour l'édition */
+        .edit-categorie-container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9); /* Fond léger pour contraste */
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        /* Titre */
+        h1 {
+            color: #2E8B57; /* Vert foncé pour le thème agricole */
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        /* Boutons et liens */
+        .btn {
+            background-color: #2E8B57;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%; /* Prendre toute la largeur */
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            background-color: #246a45; /* Vert plus foncé au survol */
+        }
+
+        /* Styles pour le lien de retour */
+        .back-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #2E8B57;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Conteneur de suppression */
+        .delete-container {
+            margin-top: 30px;
+        }
+
+        /* Bouton de suppression */
+        .delete-container .btn {
+            background-color: #c0392b; /* Rouge pour la suppression */
+        }
+
+        .delete-container .btn:hover {
+            background-color: #e74c3c; /* Rouge plus clair au survol */
+        }
+    </style>
+{% endblock %}

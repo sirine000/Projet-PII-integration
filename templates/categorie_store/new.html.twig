@@ -1,0 +1,109 @@
+{% extends 'base-user.html.twig' %} 
+{# 
+{% block title %}
+<title>New Categorie</title>{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('css/categorie.css') }}">
+
+    <style>
+    h1{
+        text-align: center;
+    }
+    
+    
+    </style>
+{% endblock %}
+
+{% block body %}
+
+<div class="container mt-5" style="background-color: #f8f9fa; padding: 20px; border-radius: 10px; margin-top: 20px;">
+    
+    <h1 class="h1">Create new Categorie</h1>
+
+
+
+    {{ include('categorie_store/_form.html.twig') }}
+
+
+    <a href="{{ path('app_categorie_store_index') }}">back to list</a>
+</div>
+
+{% endblock %} #} 
+
+
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('css/categorie.css') }}">
+
+    <style>
+        /* Conteneur principal */
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+        }
+
+        /* Image au-dessus du formulaire */
+        .form-image {
+            width: 100%;
+            max-height: 200px;
+            object-fit: cover;
+            border-radius: 10px 10px 0 0;
+        }
+
+        /* Titre */
+        h1 {
+            color: #2E8B57;
+            font-size: 24px;
+            margin-top: 15px;
+        }
+
+        /* Boutons et liens */
+        .btn-primary {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #2E8B57;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+
+        .btn-primary:hover {
+            background-color: #246a45;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #2E8B57;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <!-- Image en haut du formulaire -->
+    {# <img src="{{ asset('images/greenn.jpg') }}" alt="Form Header" class="form-image"> #}
+
+
+    {{ include('categorie_store/_form.html.twig') }}
+
+    {# <a href="{{ path('app_categorie_store_index') }}" class="back-link">← Back to list</a> #}
+</div>
+{% endblock %}

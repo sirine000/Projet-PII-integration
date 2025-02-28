@@ -1,0 +1,43 @@
+{% extends 'base-user.html.twig' %}
+
+
+{# <title>ProduitStore</title> #}
+
+{% block body %}
+    <h1>ProduitStore</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ produit_store.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ produit_store.nom }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ produit_store.description }}</td>
+            </tr>
+            <tr>
+                <th>Quantite</th>
+                <td>{{ produit_store.quantite }}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ produit_store.prix }}</td>
+            </tr>
+            <tr>
+                <th>Path_img</th>
+                <td>{{ produit_store.pathImg }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_produitstore_index') }}">back to list</a>
+
+    <a href="{{ path('app_produitstore_edit', {'id': produit_store.id}) }}">edit</a>
+
+    {{ include('produitstore/_delete_form.html.twig') }}
+{% endblock %}

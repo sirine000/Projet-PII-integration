@@ -1,0 +1,104 @@
+{% extends 'base-user.html.twig' %}
+
+{% block body %}
+<div class="container">
+    <h1 class="title">Détails de la Catégorie</h1>
+
+    <div class="card">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>ID</th>
+                    <td>{{ categorie.id }}</td>
+                </tr>
+                <tr>
+                    <th>Nom</th>
+                    <td>{{ categorie.nom }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="button-group">
+        <a href="{{ path('app_categorie_store_index') }}" class="btn btn-back">↩ Retour à la liste</a>
+        <a href="{{ path('app_categorie_store_edit', {'id': categorie.id}) }}" class="btn btn-edit">✏ Modifier</a>
+        {{ include('categorie_store/_delete_form.html.twig') }}
+        
+    </div>
+</div>
+
+<style>
+    .container {
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 20px;
+        background: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    .title {
+        color: #2E8B57;
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .card {
+        background: #f9f9f9;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+    }
+
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .table th, .table td {
+        padding: 12px;
+        border: 1px solid #ddd;
+        text-align: left;
+        width: -150%;
+    }
+
+    .table th {
+        background-color:rgb(30, 114, 66);
+        color: white;
+    }
+
+    .button-group {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 10px 15px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: 0.3s;
+        color: white;
+        margin-left:15%;
+        
+    }
+
+    .btn-back {
+        background-color: #3498db;
+    }
+
+    .btn-edit {
+        background-color: #f39c12;
+
+    }
+
+    .btn:hover {
+        opacity: 0.8;
+    }
+</style>
+
+{% endblock %}

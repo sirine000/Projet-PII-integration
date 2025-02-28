@@ -1,0 +1,62 @@
+
+{% block body %}
+<div class="delete-form-container">
+    <form method="post" action="{{ path('app_categorie_store_delete', {'id': categorie.id}) }}" onsubmit="return confirmDelete();">
+        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ categorie.id) }}">
+        <button type="submit" class="btn btn-delete">🗑 Supprimer</button>
+    </form>
+</div>
+
+<!-- Styles -->
+<style>
+    /* Conteneur pour le formulaire */
+    .delete-form-container {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    /* Bouton de suppression stylisé */
+    .btn {
+        display: inline-block;
+        padding: 12px 20px;
+        width:"50%";
+        font-size: 16px;
+        font-weight: bold;
+        text-decoration: none;
+        color: white;
+        background-color: #27ae60; /* Vert naturel */
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn:hover {
+        background-color: #2ecc71; /* Vert plus clair */
+        transform: scale(1.05);
+    }
+
+    .btn:focus {
+        outline: none;
+    }
+
+    /* Ajustements pour l'effet du bouton */
+    .btn-delete {
+        background-color: #c0392b; /* Rouge brique pour la suppression */
+        width:"50%";
+    }
+
+    .btn-delete:hover {
+        background-color: #e74c3c; /* Rouge plus clair */
+    }
+</style>
+
+<!-- Script pour la confirmation de suppression -->
+<script>
+    function confirmDelete() {
+        return confirm('Êtes-vous sûr de vouloir supprimer cette catégorie ?');
+    }
+</script>
+
+{% endblock %}
